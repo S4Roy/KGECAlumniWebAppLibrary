@@ -119,6 +119,50 @@
           }
         }
       }
-    }},
-  "defaultProject": "AlumniWebApp"
+    },
+    "alumni-lib": {
+      "projectType": "library",
+      "root": "projects/alumni-lib",
+      "sourceRoot": "projects/alumni-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/alumni-lib/tsconfig.lib.json",
+            "project": "projects/alumni-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/alumni-lib/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/alumni-lib/src/test.ts",
+            "tsConfig": "projects/alumni-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/alumni-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/alumni-lib/tsconfig.lib.json",
+              "projects/alumni-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "AlumniWebApp",
+  "cli": {
+    "analytics": false
+  }
 }
